@@ -1,5 +1,6 @@
-import os, os.path, time, struct, marshal
+import os, os.path, time, struct
 from subprocess import Popen, PIPE
+from disco import util
 from disco.netstring import decode_netstring_str
 from disco.fileutils import write_files
 from disco.util import msg
@@ -72,7 +73,7 @@ def ext_reduce(red_in, red_out, params):
                 return
 
 def prepare(ext_job, params, path):
-    write_files(marshal.loads(ext_job), path)
+    write_files(util.unpack(ext_job), path)
     open_ext(path + "/op", params)
 
 def open_ext(fname, params):
