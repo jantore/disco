@@ -442,7 +442,7 @@ def op_reduce(job):
         else:
             red_params = "0\n"
 
-        path = Task.path("EXT_MAP")
+        path = Task.path("EXT_REDUCE")
         external.prepare(job['ext_reduce'], red_params, path)
         fun_reduce.func_code = external.ext_reduce.func_code
     else:
